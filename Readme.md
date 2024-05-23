@@ -40,9 +40,13 @@ pg_ctl -D /var/db/postgres5/qrn46 -l server.journal start
 ```
 [postgres5@pg156 ~]$ cat $HOME/qrn46/postgresql.conf -> файл до изменений
 ```
+---
 
-https://github.com/Oleg-Pashchenko/rshd/blob/main/default.conf
+[Файл postgres.conf до изменений](configs/default/postgresql.conf)
 
+[Файл postgres.conf после изменений](configs/new/postgresql.conf)
+
+---
 ### Требуется установить для **`postgres.conf`**:
 
 ```
@@ -96,13 +100,18 @@ data_directory = '$HOME/ocl34'
 
 ```
 
-Файл после изменений: https://github.com/Oleg-Pashchenko/rshd/blob/main/postgresql-finish.conf
 
 ```
 [postgres5@pg156 ~/qrn46]$ cat pg_hba.conf -> файл до изменений
 ```
 
-https://github.com/Oleg-Pashchenko/rshd/blob/main/pg_hba-start.conf
+---
+
+[Файл pg_hba.conf до изменений](configs/default/pg_hba.conf)
+
+[Файл pg_hba.conf после изменений](configs/new/pg_hba.conf)
+
+---
 
 ### Требуется установить для **`pg_hba.conf`**:
 
