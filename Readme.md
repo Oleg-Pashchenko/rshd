@@ -149,6 +149,8 @@ cat > pg_hba.conf
 CREATE TABLESPACE first LOCATION '/var/db/postgres5/xnx87';
 CREATE TABLESPACE second LOCATION '/var/db/postgres5/wgt43';
 CREATE DATABASE darkpinkexam WITH TEMPLATE = template1 TABLESPACE = first;
+ALTER DATABASE darkpinkexam SET temp_tablespaces = 'first, second';
+
 CREATE TABLE studs (
 name text,
 isu integer
