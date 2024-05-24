@@ -36,6 +36,11 @@ pg_ctl -D /var/db/postgres5/qrn46 -l server.journal start
 ![Untitled](images/stage_1_2.png)
 
 ## Этап #2
+```angular2html
+psql -h localhost -p 9161 -U postgres5 -d postgres
+password: Sj/erMgC
+
+```
 
 ```
 [postgres5@pg156 ~]$ cat $HOME/qrn46/postgresql.conf -> файл до изменений
@@ -77,8 +82,6 @@ commit_delay = 100000
 # Журналирование
 log_destination = 'csvlog'
 logging_collector = on
-log_directory = '$HOME/ocl34'
-log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'
 log_truncate_on_rotation = on
 log_rotation_age = 1d
 log_rotation_size = 10MB
@@ -124,3 +127,41 @@ host    all             all             0.0.0.0/0               password
 host    all             all             ::/0                    password
 
 ```
+
+
+#### Установка значений: 
+```
+cat > postgresql.conf
+... New data ...
+
+cat > pg_hba.conf
+... New data ...
+```
+
+#### Перезапускаем систему:
+```
+ pg_ctl -D $HOME/qrn46 stop
+  pg_ctl -D $HOME/qrn46 start
+ ```
+
+## Этап 3: Дополнительные табличные пространства и наполнение базы
+```
+CREATE TABLESPACE first LOCATION '/var/db/postgres5/xnx87';
+CREATE TABLESPACE second LOCATION '/var/db/postgres5/wgt43';
+CREATE DATABASE darkpinkexam WITH TEMPLATE = template1 TABLESPACE = first;
+CREATE TABLE studs (
+name text,
+isu integer
+);
+INSERT INTO studs VALUES ('Олег', 335097);
+INSERT INTO studs VALUES ('Олег №2', 335098);
+SELECT * FROM studs;
+\db
+
+SELECT relname 
+FROM pg_class 
+WHERE reltablespace IN (SELECT oid FROM pg_tablespace);
+```
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
