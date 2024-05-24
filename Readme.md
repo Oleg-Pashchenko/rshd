@@ -162,6 +162,6 @@ SELECT relname
 FROM pg_class 
 WHERE reltablespace IN (SELECT oid FROM pg_tablespace);
 ```
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img.png](images/img.png)
+![img_1.png](images/img_1.png)
+![img_2.png](images/img_2.png)
